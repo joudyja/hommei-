@@ -1,0 +1,265 @@
+{
+  "info": {
+    "_postman_id": "hommie-api-collection",
+    "name": "Hommie API",
+    "description": "نظام إدارة العقارات - مجموعة API للفرونت إند",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000/api",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "9|QpbZRJyC2NCw5av4ZyTgn17hrVWj5R2dZTK9wcyc295b51f7",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "📋 Auth - Authentication",
+      "item": [
+        {
+          "name": "🔗 API Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"]
+            }
+          }
+        },
+        {
+          "name": "📝 Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"محمد\",\n  \"last_name\": \"علي\",\n  \"email\": \"test@example.com\",\n  \"phone\": \"0912345678\",\n  \"password\": \"password123\",\n  \"password_confirmation\": \"password123\",\n  \"role\": \"renter\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/register",
+              "host": ["{{baseUrl}}"]
+            }
+          }
+        },
+        {
+          "name": "🔐 Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"superadmin@hommie.com\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/login",
+              "host": ["{{baseUrl}}"]
+            }
+          }
+        },
+        {
+          "name": "👑 Admin Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"superadmin@hommie.com\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/login",
+              "host": ["{{baseUrl}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🏢 Apartments - الشقق",
+      "item": [
+        {
+          "name": "📄 Get All Apartments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/apartments",
+              "host": ["{{baseUrl}}"]
+            }
+          }
+        },
+        {
+          "name": "🔍 Search Apartments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/apartments/search?query=دمشق",
+              "host": ["{{baseUrl}}"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "دمشق"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "🌟 Featured Apartments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/apartments/featured",
+              "host": ["{{baseUrl}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "👤 User - المستخدم",
+      "item": [
+
+{
+          "name": "👤 Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/profile",
+              "host": ["{{baseUrl}}"]
+            }
+          }
+        },
+        {
+          "name": "🌍 Change Language",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"language\": \"ar\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/change-language",
+              "host": ["{{baseUrl}}"]
+            }
+          }
+        },
+        {
+          "name": "🎨 Change Theme",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"theme\": \"dark\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/change-theme",
+              "host": ["{{baseUrl}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "👑 Admin - الأدمن",
+      "item": [
+        {
+          "name": "👥 Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/admin/users",
+              "host": ["{{baseUrl}}"]
+            }
+          }
+        },
+        {
+          "name": "✅ Approve User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/admin/users/1/approve",
+              "host": ["{{baseUrl}}"]
+            }
+          }
+        },
+        {
+          "name": "📊 Admin Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/admin/dashboard",
+              "host": ["{{baseUrl}}"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
