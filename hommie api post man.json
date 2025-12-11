@@ -1,8 +1,8 @@
 {
   "info": {
-    "_postman_id": "hommie-api-collection",
-    "name": "Hommie API",
-    "description": "نظام إدارة العقارات - مجموعة API للفرونت إند",
+    "_postman_id": "hommie-full-api-collection",
+    "name": "Hommie - Full API Collection",
+    "description": "جميع API endpoints لمشروع Hommie بناءً على api.php مع التوكن الجاهز",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -15,135 +15,151 @@
       "key": "adminToken",
       "value": "9|QpbZRJyC2NCw5av4ZyTgn17hrVWj5R2dZTK9wcyc295b51f7",
       "type": "string"
+    },
+    {
+      "key": "userToken",
+      "value": "",
+      "type": "string"
     }
   ],
   "item": [
     {
-      "name": "📋 Auth - Authentication",
+      "name": "🔍 اختبار الاتصال",
       "item": [
         {
-          "name": "🔗 API Status",
+          "name": "🏠 الصفحة الرئيسية",
           "request": {
             "method": "GET",
             "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/",
-              "host": ["{{baseUrl}}"]
-            }
+            "url": "{{baseUrl}}/",
+            "description": "اختبار اتصال API"
           }
         },
         {
-          "name": "📝 Register User",
+          "name": "📚 التوثيق الكامل",
           "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"first_name\": \"محمد\",\n  \"last_name\": \"علي\",\n  \"email\": \"test@example.com\",\n  \"phone\": \"0912345678\",\n  \"password\": \"password123\",\n  \"password_confirmation\": \"password123\",\n  \"role\": \"renter\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/register",
-              "host": ["{{baseUrl}}"]
-            }
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api-docs"
           }
         },
         {
-          "name": "🔐 Login",
+          "name": "🔍 صفحة البحث",
           "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"email\": \"superadmin@hommie.com\",\n  \"password\": \"admin123\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/login",
-              "host": ["{{baseUrl}}"]
-            }
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/search"
           }
         },
         {
-          "name": "👑 Admin Login",
+          "name": "🆘 مركز المساعدة",
           "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"email\": \"superadmin@hommie.com\",\n  \"password\": \"admin123\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/admin/login",
-              "host": ["{{baseUrl}}"]
-            }
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/help"
           }
         }
       ]
     },
     {
-      "name": "🏢 Apartments - الشقق",
+      "name": "🔐 المصادقة العامة",
       "item": [
         {
-          "name": "📄 Get All Apartments",
+          "name": "📝 تسجيل مستخدم جديد",
           "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/apartments",
-              "host": ["{{baseUrl}}"]
-            }
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"أحمد\",\n  \"last_name\": \"محمد\",\n  \"email\": \"test@example.com\",\n  \"phone\": \"0912345678\",\n  \"password\": \"password123\",\n  \"password_confirmation\": \"password123\",\n  \"role\": \"renter\"\n}"
+            },
+            "url": "{{baseUrl}}/register"
           }
         },
         {
-          "name": "🔍 Search Apartments",
+          "name": "🔑 تسجيل دخول مستخدم",
           "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/apartments/search?query=دمشق",
-              "host": ["{{baseUrl}}"],
-              "query": [
-                {
-                  "key": "query",
-                  "value": "دمشق"
-                }
-              ]
-            }
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": "{{baseUrl}}/login"
           }
         },
         {
-          "name": "🌟 Featured Apartments",
+          "name": "👑 تسجيل دخول أدمن",
           "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/apartments/featured",
-              "host": ["{{baseUrl}}"]
-            }
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@hommie.com\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": "{{baseUrl}}/admin/login"
           }
         }
       ]
     },
     {
-      "name": "👤 User - المستخدم",
+      "name": "🏢 الشقق (عام)",
       "item": [
+        {
+          "name": "📋 عرض جميع الشقق",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/apartments"
+          }
+        },
+        {
+          "name": "🔍 بحث في الشقق",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/apartments/search?query=دمشق"
+          }
+        },
+        {
+          "name": "⭐ الشقق المميزة",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/apartments/featured"
 
-{
-          "name": "👤 Get Profile",
+}
+        },
+        {
+          "name": "👁️ عرض تفاصيل شقة",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/apartments/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "👤 المستخدم المحمي (بالتوكن)",
+      "item": [
+        {
+          "name": "👤 عرض الملف الشخصي",
           "request": {
             "method": "GET",
             "header": [
@@ -152,14 +168,45 @@
                 "value": "Bearer {{adminToken}}"
               }
             ],
-            "url": {
-              "raw": "{{baseUrl}}/profile",
-              "host": ["{{baseUrl}}"]
-            }
+            "url": "{{baseUrl}}/profile"
           }
         },
         {
-          "name": "🌍 Change Language",
+          "name": "✏️ تحديث الملف الشخصي",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"أحمد\",\n  \"last_name\": \"محدث\",\n  \"phone\": \"0998765432\"\n}"
+            },
+            "url": "{{baseUrl}}/profile"
+          }
+        },
+        {
+          "name": "🚪 تسجيل الخروج",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/logout"
+          }
+        },
+        {
+          "name": "🌍 تغيير اللغة",
           "request": {
             "method": "PUT",
             "header": [
@@ -176,14 +223,11 @@
               "mode": "raw",
               "raw": "{\n  \"language\": \"ar\"\n}"
             },
-            "url": {
-              "raw": "{{baseUrl}}/change-language",
-              "host": ["{{baseUrl}}"]
-            }
+            "url": "{{baseUrl}}/change-language"
           }
         },
         {
-          "name": "🎨 Change Theme",
+          "name": "🎨 تغيير السمة",
           "request": {
             "method": "PUT",
             "header": [
@@ -200,19 +244,11 @@
               "mode": "raw",
               "raw": "{\n  \"theme\": \"dark\"\n}"
             },
-            "url": {
-              "raw": "{{baseUrl}}/change-theme",
-              "host": ["{{baseUrl}}"]
-            }
+            "url": "{{baseUrl}}/change-theme"
           }
-        }
-      ]
-    },
-    {
-      "name": "👑 Admin - الأدمن",
-      "item": [
+        },
         {
-          "name": "👥 Get All Users",
+          "name": "📊 إحصائيات المستخدم",
           "request": {
             "method": "GET",
             "header": [
@@ -221,14 +257,56 @@
                 "value": "Bearer {{adminToken}}"
               }
             ],
-            "url": {
-              "raw": "{{baseUrl}}/admin/users",
-              "host": ["{{baseUrl}}"]
-            }
+            "url": "{{baseUrl}}/dashboard/stats"
           }
         },
         {
-          "name": "✅ Approve User",
+          "name": "📈 إحصائيات مفصلة",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/dashboard/user-stats"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔔 الإشعارات",
+      "item": [
+        {
+          "name": "📋 جميع الإشعارات",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/notifications"
+          }
+        },
+        {
+          "name": "📨 الإشعارات غير المقروءة",
+
+"request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/notifications/unread"
+          }
+        },
+        {
+          "name": "✅ تعليم كمقروء",
           "request": {
             "method": "PUT",
             "header": [
@@ -237,14 +315,42 @@
                 "value": "Bearer {{adminToken}}"
               }
             ],
-            "url": {
-              "raw": "{{baseUrl}}/admin/users/1/approve",
-              "host": ["{{baseUrl}}"]
-            }
+            "url": "{{baseUrl}}/notifications/1/read"
           }
         },
         {
-          "name": "📊 Admin Dashboard",
+          "name": "✅ تعليم الكل كمقروء",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/notifications/read-all"
+          }
+        },
+        {
+          "name": "🗑️ حذف إشعار",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/notifications/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "💬 الرسائل",
+      "item": [
+        {
+          "name": "📨 المحادثات",
           "request": {
             "method": "GET",
             "header": [
@@ -253,10 +359,470 @@
                 "value": "Bearer {{adminToken}}"
               }
             ],
-            "url": {
-              "raw": "{{baseUrl}}/admin/dashboard",
-              "host": ["{{baseUrl}}"]
-            }
+            "url": "{{baseUrl}}/conversations"
+          }
+        },
+        {
+          "name": "👁️ عرض محادثة",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/conversations/1"
+          }
+        },
+        {
+          "name": "📩 إرسال رسالة",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conversation_id\": 1,\n  \"message\": \"مرحباً، أريد الاستفسار عن الشقة\"\n}"
+            },
+            "url": "{{baseUrl}}/messages"
+          }
+        },
+        {
+          "name": "🗑️ حذف رسالة",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/messages/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "⭐ المفضلة",
+      "item": [
+        {
+          "name": "📋 قائمة المفضلة",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/favorites"
+          }
+        },
+        {
+          "name": "➕ إضافة للمفضلة",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apartment_id\": 1\n}"
+
+},
+            "url": "{{baseUrl}}/favorites"
+          }
+        },
+        {
+          "name": "🗑️ حذف من المفضلة",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/favorites/1"
+          }
+        },
+        {
+          "name": "🏠 حجز من المفضلة",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start_date\": \"2024-12-01\",\n  \"end_date\": \"2024-12-10\"\n}"
+            },
+            "url": "{{baseUrl}}/favorites/book"
+          }
+        }
+      ]
+    },
+    {
+      "name": "👑 الأدمن - المحمي",
+      "item": [
+        {
+          "name": "📊 لوحة تحكم الأدمن",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/dashboard"
+          }
+        },
+        {
+          "name": "👥 جميع المستخدمين",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/users"
+          }
+        },
+        {
+          "name": "👁️ عرض مستخدم",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/users/1"
+          }
+        },
+        {
+          "name": "✅ موافقة على مستخدم",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/users/1/approve"
+          }
+        },
+        {
+          "name": "❌ رفض مستخدم",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/users/1/reject"
+          }
+        },
+        {
+          "name": "🗑️ حذف مستخدم",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/users/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "📋 إدارة الحجوزات (أدمن)",
+      "item": [
+        {
+          "name": "📋 جميع الحجوزات",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/bookings"
+          }
+        },
+        {
+          "name": "👁️ عرض حجز",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/bookings/1"
+
+}
+        },
+        {
+          "name": "✅ تأكيد حجز",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/bookings/1/confirm"
+          }
+        },
+        {
+          "name": "❌ إلغاء حجز",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/bookings/1/cancel"
+          }
+        },
+        {
+          "name": "🔄 تحديث حالة حجز",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/bookings/1/update-status"
+          }
+        },
+        {
+          "name": "🗑️ حذف حجز",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/bookings/1"
+          }
+        },
+        {
+          "name": "📊 إحصائيات الحجوزات",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/bookings/stats"
+          }
+        },
+        {
+          "name": "📅 الحجوزات القادمة",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/bookings/upcoming"
+          }
+        },
+        {
+          "name": "🏠 الحجوزات النشطة",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/bookings/active"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🏠 إدارة الشقق (أدمن)",
+      "item": [
+        {
+          "name": "📋 جميع الشقق",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/apartments"
+          }
+        },
+        {
+          "name": "👁️ عرض شقة",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/apartments/1"
+          }
+        },
+        {
+          "name": "✅ موافقة على شقة",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/apartments/1/approve"
+          }
+        },
+        {
+          "name": "❌ رفض شقة",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/apartments/1/reject"
+          }
+
+},
+        {
+          "name": "🔄 تحديث حالة شقة",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/apartments/1/update-status"
+          }
+        },
+        {
+          "name": "🔄 تبديل توفر شقة",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/apartments/1/toggle-availability"
+          }
+        },
+        {
+          "name": "🗑️ حذف شقة",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/apartments/1"
+          }
+        },
+        {
+          "name": "🖼️ حذف صورة شقة",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/apartments/1/delete-image"
+          }
+        },
+        {
+          "name": "📊 إحصائيات الشقق",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/apartments/stats"
+          }
+        },
+        {
+          "name": "👨‍💼 مالكو الشقق",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/admin/apartments/owners"
           }
         }
       ]
